@@ -33,13 +33,15 @@ project {
 
     params {
         text("cat_name", "Wizzard", readOnly = true, allowEmpty = true)
-        param("env.name", "Alexey")
         param("env.cat_name", "%cat_name%")
+        param("env.name", "Alexey")
     }
 }
 
 object Build : BuildType({
     name = "Build"
+
+    artifactRules = "target/*.jar => target"
 
     vcs {
         root(DslContext.settingsRoot)
